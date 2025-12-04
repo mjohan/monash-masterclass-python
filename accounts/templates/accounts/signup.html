@@ -1,0 +1,186 @@
+<!-- accounts/templates/accounts/signup.html -->
+
+{% extends "accounts/base_accounts.html" %}
+
+{% block content %}
+<div class="row justify-content-center align-items-start g-4">
+    <!-- Left: form card -->
+    <div class="col-md-7 col-lg-6">
+        <div class="card signup-card">
+            <div class="card-body p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <div class="hero-badge">
+                        Monash Sign-Up - Live Demo
+                    </div>
+                    <h1 class="h3 mb-2">Create Your Demo Account</h1>
+                    <p class="text-muted mb-0" style="font-size: 0.95rem;">
+                        We'll use this form to explore how Python checks each field on the server.
+                    </p>
+                </div>
+
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    <h2 class="form-section-title mt-2">Basic information</h2>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="{{ form.username.id_for_label }}">
+                            {{ form.username.label }}
+                        </label>
+                        {{ form.username }}
+                        {% if form.username.errors %}
+                            <div class="text-danger small">
+                                {{ form.username.errors|striptags }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="{{ form.full_name.id_for_label }}">
+                            {{ form.full_name.label }}
+                        </label>
+                        {{ form.full_name }}
+                        {% if form.full_name.errors %}
+                            <div class="text-danger small">
+                                {{ form.full_name.errors|striptags }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="{{ form.age.id_for_label }}">
+                                    {{ form.age.label }}
+                                </label>
+                                {{ form.age }}
+                                {% if form.age.errors %}
+                                    <div class="text-danger small">
+                                        {{ form.age.errors|striptags }}
+                                    </div>
+                                {% endif %}
+                                {% if form.age.help_text %}
+                                    <div class="form-text">
+                                        {{ form.age.help_text }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="{{ form.phone_number.id_for_label }}">
+                                    {{ form.phone_number.label }}
+                                </label>
+                                {{ form.phone_number }}
+                                {% if form.phone_number.errors %}
+                                    <div class="text-danger small">
+                                        {{ form.phone_number.errors|striptags }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="form-section-title mt-3">Contact & security</h2>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="{{ form.email.id_for_label }}">
+                            {{ form.email.label }}
+                        </label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="text-danger small">
+                                {{ form.email.errors|striptags }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="{{ form.password.id_for_label }}">
+                                    {{ form.password.label }}
+                                </label>
+                                {{ form.password }}
+                                {% if form.password.errors %}
+                                    <div class="text-danger small">
+                                        {{ form.password.errors|striptags }}
+                                    </div>
+                                {% endif %}
+                                <br>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="{{ form.confirm_password.id_for_label }}">
+                                    {{ form.confirm_password.label }}
+                                </label>
+                                {{ form.confirm_password }}
+                                {% if form.confirm_password.errors %}
+                                    <div class="text-danger small">
+                                        {{ form.confirm_password.errors|striptags }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        {{ form.agree_to_terms }}
+                        <label class="form-check-label" for="{{ form.agree_to_terms.id_for_label }}">
+                            {{ form.agree_to_terms.label }}
+                        </label>
+                        {% if form.agree_to_terms.errors %}
+                            <div class="text-danger small">
+                                {{ form.agree_to_terms.errors|striptags }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            Sign Up
+                        </button>
+                    </div>
+
+                    <p class="text-muted mt-3 mb-0" style="font-size: 0.85rem;">
+                        Try entering "wrong" values (too young, invalid phone, strange email) to see
+                        how the backend responds.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right: explanation / cheat-sheet card -->
+    <div class="col-md-5 col-lg-4 d-none d-md-block">
+        <div class="hero-highlight-card">
+            <h2>What this form is testing</h2>
+            <ul>
+                <li>Required fields (no empty username, name, email, etc.)</li>
+                <li>Age range and numeric checks</li>
+                <li>Phone number: digits and length</li>
+                <li>Very simple email format (using "@")</li>
+                <li>Password strength and matching</li>
+                <li>"Agree to terms" as a True/False rule</li>
+            </ul>
+            <hr class="my-3">
+            <p class="mb-1" style="font-size: 0.9rem;">
+                All of these checks are done in <strong>Python on the server</strong>,
+                not with JavaScript in the browser.
+            </p>
+            <p class="mb-0 text-muted" style="font-size: 0.85rem;">
+                During the session, we'll open the code and adjust some of these rules together.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

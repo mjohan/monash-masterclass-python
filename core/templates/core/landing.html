@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Monash App Sprint - Landing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS via CDN -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous"
+    >
+
+    <!-- Reuse the same CSS as accounts pages -->
+    <link rel="stylesheet" href="{% static 'accounts/css/signup.css' %}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+            Monash App Sprint
+        </a>
+        <span class="navbar-text text-white-50 d-none d-md-inline">
+            60-Minute MVP Challenge
+        </span>
+    </div>
+</nav>
+
+<main class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left: main message -->
+            <div class="col-md-6">
+                <div class="hero-badge">
+                    Live Coding - Django - Python
+                </div>
+                <h1 class="hero-title">
+                    Build a Sign-Up Form, Together
+                </h1>
+                <p class="hero-subtitle">
+                    In this session, you'll help design the rules behind a real
+                    web application and see how Python enforces them in real time.
+                </p>
+
+                <div class="d-flex flex-column flex-sm-row gap-2">
+                    <a href="{% url 'accounts:signup' %}" class="btn btn-primary btn-lg">
+                        Go to Sign-Up Page
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: highlight card -->
+            <div class="col-md-6 mt-4 mt-md-0">
+                <div class="hero-highlight-card">
+                    <h2>Today, you'll see how apps:</h2>
+                    <ul>
+                        <li>Collect data from a sign-up form</li>
+                        <li>Use Python to check each field on the server</li>
+                        <li>Give clear feedback when something is wrong</li>
+                    </ul>
+                    <hr class="my-3">
+                    <p class="mb-0" style="font-size: 0.9rem;">
+                        This is a small preview of what you can learn in the
+                        <strong>Bachelor of Information Technology</strong> at Monash University Indonesia.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <section id="about-session" class="mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <p class="text-muted mb-1" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em;">
+                        Session Overview
+                    </p>
+                    <h2 class="h4 mb-3">Monash App Sprint: 60-Minute MVP Challenge</h2>
+                    <p class="text-muted mb-0">
+                        We'll start with a simple sign-up page that accepts almost anything. Together,
+                        we'll add step-by-step checks in Python, turning it into a smarter form that can
+                        catch missing, invalid, or suspicious input, just like real apps you use every day.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Optional Bootstrap JS -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+></script>
+
+</body>
+</html>
