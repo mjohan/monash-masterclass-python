@@ -21,46 +21,46 @@ class SignupForm(forms.Form):
     username = forms.CharField(
         label="Username",
         max_length=50,
-        required=True,
+        required=False,
         widget=forms.TextInput(attrs={"class": "form-control"}),
     )
 
     full_name = forms.CharField(
         label="Full Name",
         max_length=100,
-        required=True,
+        required=False,
         widget=forms.TextInput(attrs={"class": "form-control"}),
     )
 
     age = forms.IntegerField(
         label="Age",
-        required=True,
+        required=False,
         widget=forms.NumberInput(attrs={"class": "form-control"}),
     )
 
     phone_number = forms.CharField(
         label="Phone Number",
         max_length=20,
-        required=True,
+        required=False,
         widget=forms.TextInput(attrs={"class": "form-control"}),
     )
 
     email = forms.CharField(
         label="Email Address",
         max_length=100,
-        required=True,
+        required=False,
         widget=forms.EmailInput(attrs={"class": "form-control"}),
     )
 
     password = forms.CharField(
         label="Password",
-        required=True,
+        required=False,
         widget=forms.PasswordInput(attrs={"class": "form-control"}),
     )
 
     confirm_password = forms.CharField(
         label="Confirm Password",
-        required=True,
+        required=False,
         widget=forms.PasswordInput(attrs={"class": "form-control"}),
     )
 
