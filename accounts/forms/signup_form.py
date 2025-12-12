@@ -20,19 +20,19 @@ class SignupForm(forms.Form):
     """
     username = forms.CharField(
         label="Username",
-        max_length=50,
+        max_length=250,
         required=False,
         widget=forms.TextInput(attrs={"class": "form-control"}),
     )
 
     full_name = forms.CharField(
         label="Full Name",
-        max_length=100,
+        max_length=300,
         required=False,
         widget=forms.TextInput(attrs={"class": "form-control"}),
     )
 
-    age = forms.IntegerField(
+    age = forms.CharField(
         label="Age",
         required=False,
         widget=forms.NumberInput(attrs={"class": "form-control"}),
@@ -40,14 +40,14 @@ class SignupForm(forms.Form):
 
     phone_number = forms.CharField(
         label="Phone Number",
-        max_length=20,
+        max_length=100,
         required=False,
         widget=forms.TextInput(attrs={"class": "form-control"}),
     )
 
     email = forms.CharField(
         label="Email Address",
-        max_length=100,
+        max_length=200,
         required=False,
         widget=forms.EmailInput(attrs={"class": "form-control"}),
     )
